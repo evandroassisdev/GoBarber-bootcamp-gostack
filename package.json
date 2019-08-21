@@ -1,0 +1,8 @@
+{
+  "name": "GoBarber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/evandroassisdev/GoBarber-bootcamp-gostack.git",
+  "author": "Evandro Assis <evandroassisdev@gmail.com>",
+  "license": "MIT"
+}
