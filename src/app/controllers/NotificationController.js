@@ -3,14 +3,14 @@ import User from '../models/User';
 
 class NotificationController {
   async index(req, res) {
-    const checkIsProvider = await User.beforeFindAfterOptions({
+    const checkIsProvider = await User.findOne({
       where: { id: req.userId, provider: true },
     });
 
     if (!checkIsProvider) {
       return res
         .status(401)
-        .json({ error: 'Only provider can load notifications' });
+        .json({ error: 'Only Providers can load notifications!' });
     }
 
     const notifications = await Notification.find({
@@ -23,15 +23,13 @@ class NotificationController {
   }
 
   async update(req, res) {
-    // const notification = await Notification.findById(req.params.id);
-
-    const notification = await Notification.findByIdAndUpdate(
+    const notifications = await Notification.findByIdAndUpdate(
       req.params.id,
       { read: true },
       { new: true }
     );
 
-    return res.json(notification);
+    return res.json(notifications);
   }
 }
 
